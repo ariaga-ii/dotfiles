@@ -115,3 +115,8 @@ export VIM_CONFIG="/home/adam/.config/nvim/init.vim"
 
 export EDITOR='/usr/bin/nvim'
 export VISUAL='/usr/bin/nvim'
+
+export DOTFILES="$HOME/dotfiles"
+alias edzshrc="nvim $DOTFILES/.zshrc +"
+alias edvrc="nvim $DOTFILES/nvim/init.vim +"
+
