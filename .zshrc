@@ -70,7 +70,14 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  vi-mode
+)
+
+
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+MODE_INDICATOR="%F{yellow}+%f"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,5 +125,4 @@ export VISUAL='/usr/bin/nvim'
 
 export DOTFILES="$HOME/dotfiles"
 alias edzshrc="nvim $DOTFILES/.zshrc +"
-alias edvrc="nvim $DOTFILES/nvim/init.vim +"
-
+alias edvrc="nvim $DOTFILES/nvim"
