@@ -1,5 +1,3 @@
-filetype plugin indent on
-
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -136,22 +134,4 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '>-2<CR>gv=gv
-
-
-call plug#begin('~/.config/nvim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-" Plug 'morhetz/gruvbox'
-" Plug 'arcticicestudio/nord-vim'
-" Plug 'drewtempelmeyer/palenight.vim'
-" Plug 'danilo-augusto/vim-afterglow'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'doums/darcula'
-call plug#end()
 
