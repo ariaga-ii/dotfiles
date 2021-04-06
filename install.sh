@@ -1,5 +1,4 @@
 dotfiles_dir=~/dotfiles
-
 ln -sf $dotfiles_dir/.zshrc ~/.zshrc
 
 config_dir=~/.config
@@ -14,7 +13,6 @@ for f in `find nvim/plugin -maxdepth 1 -type f -name "*.vim"`; do
 done
 ln -sf $dotfiles_dir/nvim/autoload/coc.vim $config_dir/nvim/plugged/coc.nvim/autoload/coc.vim
 ln -sf $dotfiles_dir/nvim/coc-settings.json $config_dir/nvim/coc-settings.json
-
 
 # ranger
 ranger_config_dir=~/.config/ranger

@@ -1,15 +1,19 @@
 set expandtab
 set tabstop=2
+set nobackup
+set cmdheight=1
+set noswapfile
+set updatetime=50
 set softtabstop=2
 set shiftwidth=2
 set laststatus=2
 set encoding=utf-8
 set hidden
-set nobackup
 set nowritebackup
-set cmdheight=1
-set noswapfile
-set updatetime=50
+set colorcolumn=80
+
+let mapleader=","
+
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -20,5 +24,4 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
-
 
