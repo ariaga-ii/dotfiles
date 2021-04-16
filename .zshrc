@@ -72,15 +72,15 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  vi-mode
+  #vi-mode
 )
 
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-MODE_INDICATOR="%F{yellow}+%f"
+#VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+#MODE_INDICATOR="%F{yellow}+%f"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -125,3 +125,18 @@ export VISUAL='/usr/bin/nvim'
 export DOTFILES="$HOME/dotfiles"
 alias zshconfig="nvim $DOTFILES/.zshrc +"
 alias vimconfig="nvim $DOTFILES/nvim"
+
+
+# go stuff
+export PATH=$PATH:/usr/local/go/bin
+
+# python stuff
+export PYTHONPATH=$HOME/python
+
+dockerstop() {
+  docker rm $(docker stop $(docker ps -a -q --filter ancestor="$1" --format="{{.ID}}"))
+}
+
+
+# octeract stuff
+source $HOME/oct/.oct-shortcuts
