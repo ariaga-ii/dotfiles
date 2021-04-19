@@ -73,6 +73,8 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   #vi-mode
+  docker
+  docker-compose
 )
 
 

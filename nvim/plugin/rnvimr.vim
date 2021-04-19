@@ -15,3 +15,13 @@ let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
 
 " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
 let g:rnvimr_enable_bw = 1
+
+" Map Rnvimr action
+let g:rnvimr_action = {
+            \ '<C-x': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+nnoremap <silent> <M-f> :RnvimrToggle<CR>
+tnoremap <silent> <M-f> <C-\><C-n>:RnvimrToggle<CR>
