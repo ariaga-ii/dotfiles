@@ -10,8 +10,8 @@ let g:startify_bookmarks = [
       \ { 'n': '~/dotfiles/nvim' },
       \ { 'z': '~/dotfiles/.zshrc' },
       \ '~/oct/payment-microsite',
-      \ '~/oct/solver-on-demand/gui',
-      \ '~/oct/solver-on-demand/solver-service-api',
+      \ '~/oct/solver/gui',
+      \ '~/oct/solver/api',
       \ ]
 let g:startify_custom_header = [                                        
       \'            ,**,                  //.       ',

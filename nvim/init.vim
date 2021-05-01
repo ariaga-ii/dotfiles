@@ -12,7 +12,7 @@ set laststatus=2
 set encoding=utf-8
 set hidden
 set nowritebackup
-set colorcolumn=80
+"set colorcolumn=80
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -25,23 +25,35 @@ else
   set signcolumn=yes
 endif
 
+if (has('termguicolors'))
+  set termguicolors
+endif
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'doums/darcula'
 Plug 'jacoborus/tender.vim'
 Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
-Plug 'kevinhwang91/rnvimr'
+Plug 'folke/tokyonight.nvim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'dikiaap/minimalist'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+
+function FindProject()
+  return finddir('.git/..', expand('%:p:h').';') 
+endfunction
 
 

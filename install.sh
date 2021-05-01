@@ -20,4 +20,6 @@ ln -sf $dotfiles_dir/ranger/rc.conf $ranger_config_dir/rc.conf
 ln -sf $dotfiles_dir/ranger/rifle.conf $ranger_config_dir/rifle.conf
 ln -sf $dotfiles_dir/ranger/scope.sh $ranger_config_dir/scope.sh
 
-
+#bat
+mkdir -p $config_dir/bat
+ln -sf $dotfiles_dir/bat/config $config_dir/bat/config

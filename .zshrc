@@ -128,7 +128,7 @@ export DOTFILES="$HOME/dotfiles"
 alias zshconfig="nvim $DOTFILES/.zshrc +"
 alias vimconfig="nvim $DOTFILES/nvim"
 
-
+alias new="terminator -e"
 # go stuff
 export PATH=$PATH:/usr/local/go/bin
 
@@ -139,6 +139,14 @@ dockerstop() {
   docker rm $(docker stop $(docker ps -a -q --filter ancestor="$1" --format="{{.ID}}"))
 }
 
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias bigvim="terminator -f -x nvim"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 # octeract stuff
 source $HOME/oct/.oct-shortcuts
+
