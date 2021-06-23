@@ -75,6 +75,7 @@ plugins=(
   #vi-mode
   docker
   docker-compose
+  kubectl
 )
 
 
@@ -131,16 +132,28 @@ alias vimconfig="nvim $DOTFILES/nvim"
 alias new="terminator -e"
 # go stuff
 export PATH=$PATH:/usr/local/go/bin
-
+export PATH=$PATH:$(go env GOPATH)/bin
 # python stuff
 export PYTHONPATH=$HOME/python
 
 dockerstop() {
   docker rm $(docker stop $(docker ps -a -q --filter ancestor="$1" --format="{{.ID}}"))
 }
+alias docekr="docker"
 
-export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+alias dockershell="docker run --rm -i -t --entrypoint=/bin/bash"
+
+function dockershellhere() {
+  dirname=${PWD##*/}
+  docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
+}
+
+
+
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias bigvim="terminator -f -x nvim"
@@ -149,4 +162,9 @@ alias bigvim="terminator -f -x nvim"
 
 # octeract stuff
 source $HOME/oct/.oct-shortcuts
+
+
+# fnm
+export PATH=/home/adam/.fnm:$PATH
+eval "`fnm env`"
 

@@ -20,9 +20,9 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 if has("patch-8.1.1564")
 " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
 else
   set signcolumn=yes
+  set signcolumn=number
 endif
 
 if (has('termguicolors'))
@@ -35,25 +35,17 @@ Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'vim-airline/vim-airline-themes'
-Plug 'doums/darcula'
-Plug 'jacoborus/tender.vim'
-Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
-Plug 'folke/tokyonight.nvim'
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'dikiaap/minimalist'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 function FindProject()
   return finddir('.git/..', expand('%:p:h').';') 
 endfunction
-
 

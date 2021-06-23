@@ -3,15 +3,11 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
   "coc.preferences.extensionUpdateCheck": "never",
-  "coc.preferences.formatOnSaveFiletypes": [
-    "markdown",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": ["json"],
   "explorer.previewAction.onHover": "content",
   "explorer.file.revealWhenOpen": true,
-  "explorer.quitOnOpen": true
+  "explorer.quitOnOpen": true,
+  "snippets.ultisnips.enable": true,
+  "snippets.ultisnips.directories": ["UltiSnips", "scnvim-data"],
+  "prettier.statusItemText": ""
 }

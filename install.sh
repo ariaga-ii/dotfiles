@@ -13,6 +13,8 @@ for f in `find nvim/plugin -maxdepth 1 -type f -name "*.vim"`; do
 done
 ln -sf $dotfiles_dir/nvim/autoload/coc.vim $config_dir/nvim/plugged/coc.nvim/autoload/coc.vim
 ln -sf $dotfiles_dir/nvim/coc-settings.json $config_dir/nvim/coc-settings.json
+ln -sf $dotfiles_dir/nvim/ftplugin $config_dir/nvim/ftplugin
+
 
 # ranger
 ranger_config_dir=~/.config/ranger

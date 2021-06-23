@@ -13,7 +13,7 @@
 
 "let g:airline_theme='onedark'
 
-set background="light"
+set background=dark
 let g:gruvbox_bold = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_underline = 1
