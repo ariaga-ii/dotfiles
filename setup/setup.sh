@@ -1,7 +1,12 @@
 CONFIG_HOME=$HOME/.config2
+prompt() {
+  vared -cp '$1 (y/n) ? ' ans
+  echo $ans
+}
+
 # apple dev tools
 __xcode() {
-  read -p "install xcode tools? (y/n) " install_xcode
+  install_xcode = $(prompt "install xcode tools (y/n) ")
   if [ "$install_xcode" = "y" ]; then
     echo "installing xcode tools..."
     xcode-select --install;
