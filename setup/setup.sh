@@ -1,7 +1,7 @@
 CONFIG_HOME=$HOME/.config2
 prompt() {
   local ans=""
-  printf '%s ' "$1 (y/n)" 
+  printf '%s (y/n) ' $1
   read ans
   if [ "$ans" = "y" ]; then
       eval "$2"
@@ -32,11 +32,11 @@ __git() {
   echo "configuring git..."
 
   local git_user=""
-  printf '%s ' "please enter github username: " 
+  printf '%s' "please enter github username: " 
   read git_user
 
   local git_email=""
-  printf '%s ' "please enter github email: " 
+  printf '%s' "please enter github email: " 
   read git_email 
 
   __configure_ssh $git_email
