@@ -1,16 +1,16 @@
 CONFIG_HOME=$HOME/.config2
 prompt() {
-  vared -cp '$1 (y/n) ? ' ans
-  echo $ans
+  printf '%s ' "$1 (y/n)" 
+  read ans
+  if [ "$ans" = "y" ]; then
+      eval "$2"
+  fi
 }
 
 # apple dev tools
 __xcode() {
-  install_xcode = $(prompt "install xcode tools (y/n) ")
-  if [ "$install_xcode" = "y" ]; then
-    echo "installing xcode tools..."
-    xcode-select --install;
-  fi
+  echo "installing xcode tools..."
+  xcode-select --install;
 }
 
 __configure_ssh() {
@@ -27,61 +27,46 @@ __configure_ssh() {
 }
 
 __git() {
-  read -p "configure git? (y/n) " configure_git
-  if [ "$configure_git" = "y" ]; then
-    read git_user"please enter github username: "
-    read git_email"please enter email: "
-    __configure_ssh $git_email
-    git config --global user.name=$git_user
-    git config --global user.email=$git_email
-  fi
+  echo "configuring git..."
+  read git_user"please enter github username: "
+  read git_email"please enter email: "
+  __configure_ssh $git_email
+  git config --global user.name=$git_user
+  git config --global user.email=$git_email
 }
 
 __dotfiles() {
-  read -p "fetch full config? (y/n) " fetch_dotfiles
-  if [ "$fetch_dotfiles" = "y" ]; then
-    git clone --recurse-submodules --remote-submodules git@github.com:crawdaddie/dotfiles.git $CONFIG_HOME
-  fi
+  git clone --recurse-submodules --remote-submodules git@github.com:crawdaddie/dotfiles.git $CONFIG_HOME
 }
 
 # brew
 __brew() {
-  read -p "install brew? (y/n) " install_brew 
-  if [ "$install_brew" = "y" ]; then
-    echo "installing brew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo "installing packages from brewfile"
-    brew bundle --file=$CONFIG_HOME/Brewfile
-
-  fi
+  echo "installing brew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "installing packages from brewfile"
+  brew bundle --file=$CONFIG_HOME/Brewfile
 }
 
 # oh-my-zsh
 __shell() {
-  read -p "configure oh-my-zsh? " configure_ohmyzsh
-  if [ "$configure_ohmyzsh" = "y" ]; then
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    ln -s $CONFIG_HOME/shell/.zshrc ~/.zshrc
-    ln -s $CONFIG_HOME/shell/.p10k.zsh ~/.p10k.zsh
-    $(brew --prefix)/opt/fzf/install
-  fi
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  ln -s $CONFIG_HOME/shell/.zshrc ~/.zshrc
+  ln -s $CONFIG_HOME/shell/.p10k.zsh ~/.p10k.zsh
+  $(brew --prefix)/opt/fzf/install
 }
 
 __python() {
-  read -p "install python? " configure_python
-  if [ "$configure_python" = "y" ]; then
-    pyenv init
-    pyenv install anaconda3-5.3.1
-    pyenv global anaconda3-5.3.1
-    pip install ptpython
-    ln -s $CONFIG_HOME/ptpython $HOME/Library/Application\ Support/
-  fi
+  pyenv init
+  pyenv install anaconda3-5.3.1
+  pyenv global anaconda3-5.3.1
+  pip install ptpython
+  ln -s $CONFIG_HOME/ptpython $HOME/Library/Application\ Support/
 }
 
-__xcode
-__git
-__dotfiles
-__brew
-__shell
-__python
+prompt "install xcode tools?" "__xcode"
+prompt "configure git?" "__git"
+prompt "configure dotfiles?" "__dotfiles"
+prompt "configure brew?" "__brew"
+prompt "configure shell?" "__shell"
+prompt "configure python?" "__python"
