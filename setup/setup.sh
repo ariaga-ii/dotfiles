@@ -64,9 +64,9 @@ __python() {
   ln -s $CONFIG_HOME/ptpython $HOME/Library/Application\ Support/
 }
 
-prompt "install xcode tools?" "__xcode"
-prompt "configure git?" "__git"
-prompt "configure dotfiles?" "__dotfiles"
-prompt "configure brew?" "__brew"
-prompt "configure shell?" "__shell"
-prompt "configure python?" "__python"
+prompt "install xcode tools?" "__xcode";
+prompt "configure git?" "__git";
+prompt "configure dotfiles?" "__dotfiles";
+prompt "configure brew?" "__brew";
+prompt "configure shell?" "__shell";
+prompt "configure python?" "__python";
