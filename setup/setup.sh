@@ -30,8 +30,8 @@ __configure_ssh() {
 
 __git() {
   echo "configuring git..."
-  read git_user"please enter github username: "
-  read git_email"please enter email: "
+  read git_user"?please enter github username: "
+  read git_email"?please enter email: "
   __configure_ssh $git_email
   git config --global user.name=$git_user
   git config --global user.email=$git_email
