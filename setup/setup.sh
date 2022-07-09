@@ -1,4 +1,4 @@
-CONFIG_HOME=$HOME/.config2
+CONFIG_HOME=$HOME/.config
 prompt() {
   local ans=""
   printf '%s (y/n) ' $1
