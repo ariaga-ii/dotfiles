@@ -106,9 +106,9 @@ alias gfp="git fetch && git pull"
 alias gcn="git checkout -b"
 
 # vim
-export VIM_CONFIG="$HOME/.config/nvim/init.lua"
-export EDITOR='/opt/homebrew/bin/nvim'
-export VISUAL='/opt/homebrew/bin/nvim'
+#export VIM_CONFIG="$HOME/.config/nvim/init.lua"
+#export EDITOR='/opt/homebrew/bin/nvim'
+#export VISUAL='/opt/homebrew/bin/nvim'
 
 # export DOTFILES="$ADAM/dotfiles"
 alias zshconfig="nvim $DOTFILES/.zshrc +"
