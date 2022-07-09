@@ -1,0 +1,355 @@
+
+# 2022-04-18 11:58:04.228693
++ls
+
+# 2022-04-18 11:58:12.286233
++import sys
+
+# 2022-04-18 11:58:14.890054
++sys.path
+
+# 2022-04-18 12:00:05.129302
++import os
+
+# 2022-04-18 12:00:08.859087
++os.getcwd()
+
+# 2022-04-18 12:00:34.994628
++asjhh
+
+# 2022-04-18 12:01:04.219078
++import os
++print(os.getcwd())
++
+
+# 2022-04-18 12:01:21.518427
++import os
++print(os.getcwd())
+
+# 2022-04-18 14:38:36.276728
++import os
+
+# 2022-04-18 14:38:39.903562
++import sys
+
+# 2022-04-18 14:38:50.894561
++def func():
++    print('some stuff')
+
+# 2022-04-18 14:59:09.564392
++quit()
+
+# 2022-04-22 10:17:38.783575
++nums = [1,1,1,2,2,3]
+
+# 2022-04-22 10:17:40.202645
++k = 2
+
+# 2022-04-22 10:17:47.860006
++count = Counter(nums)
+
+# 2022-04-22 10:18:04.378432
++from collections import Counter
+
+# 2022-04-22 10:18:11.671309
++count = Counter(nums)
+
+# 2022-04-22 10:18:13.692919
++count
+
+# 2022-04-24 20:00:39.050871
++quit()
+
+# 2022-04-24 20:01:12.674788
++a = "abcdefggghijklmnop"
+
+# 2022-04-24 20:01:26.491046
++b = "gab"
+
+# 2022-04-24 20:01:40.756461
++i = [a.index(x) for x in b]
+
+# 2022-04-24 20:01:42.227048
++i
+
+# 2022-04-25 09:07:11.947408
++ls
+
+# 2022-04-25 09:07:18.308556
++from appdirs import *
+
+# 2022-04-25 10:27:12.797510
++quit()
+
+# 2022-04-25 10:32:47.429981
++import sys
+
+# 2022-04-25 10:32:53.149057
++print(sys.version)
+
+# 2022-04-25 10:33:10.819892
++sys.version_info
+
+# 2022-04-25 10:33:17.719018
++sys.version_info()
+
+# 2022-06-05 21:41:56.645810
++ciphertext = '''46  15  29  82  25 221   6 237  32  84  17  35  71
++  30  38  82  11  37  79  25  31  89 202  23  85  28
++ 209  89  25  29  92  19  31  77 202  37  78  15 209
++  45  11  30  72  19  37   6  13  25  71  22  29  75
++  24  24  75 216 209  54  22  22  71  29  22   6  29
++  22  84  14 209  95  25  38  88 202  36  85  22  38
++  90  19  32  84 202  18  84  14 209  41   0 209  90
++  25 209  79  13  18  84  13  32  74  15 241  77  11
++  30  72  19  37  88  15  36  75  11  35  73  18 223
++  73  25  30   6  27  38  85  30  26  84  17 209  88
++  15  23  75  28  22  84  13  22  32 202 230  30  14
++ 225  74 224 228  29 219  20'''
+
+# 2022-06-05 21:41:59.011579
++ciphertext
+
+# 2022-06-05 21:42:12.736472
++ciphertext = ciphertext.split(' ')
+
+# 2022-06-05 21:42:15.231951
++ciphertext
+
+# 2022-06-05 21:42:42.167962
++ciphertext = [x for x in ciphertext if x != '']
+
+# 2022-06-05 21:42:44.373867
++ciphertext
+
+# 2022-06-05 21:43:01.677236
++ciphertext = [int(x) for x in ciphertext]
+
+# 2022-06-05 21:43:03.915588
++ciphertext
+
+# 2022-06-05 21:43:41.186324
++ciphertextA = [x for x, i in enumerate(ciphertext) if i % 3 == 0]
+
+# 2022-06-05 21:43:43.815537
++ciphertextA
+
+# 2022-06-05 21:46:41.781949
++ciphertext
+
+# 2022-06-05 21:49:28.217816
++for x in ciphertext:
++    print(x)
+
+# 2022-06-05 21:50:23.087016
++for x, i in enumerate(ciphertext):
++    print(x, i)
+
+# 2022-06-05 21:50:40.252053
++for i, x in enumerate(ciphertext):
++    print(x, i)
+
+# 2022-06-05 21:51:28.418324
++ciphertextA = [x for i, x in enumerate(ciphertext) if i % 3 == 0]
+
+# 2022-06-05 21:51:31.118901
++ciphertextA
+
+# 2022-06-05 21:53:19.950338
++ord('a')
+
+# 2022-06-05 21:53:30.600494
++chr(ciphertextA)
+
+# 2022-06-05 21:53:50.558363
++[chr(x) for x in ciphertextA]
+
+# 2022-06-05 21:53:58.011657
++[chr(x - 1) for x in ciphertextA]
+
+# 2022-06-05 21:54:02.198808
++[chr(x - 2) for x in ciphertextA]
+
+# 2022-06-05 21:54:08.160066
++[chr(x - 3) for x in ciphertextA]
+
+# 2022-06-05 21:54:14.984038
++[chr(x - 4) for x in ciphertextA]
+
+# 2022-06-05 21:54:23.125384
++[chr(x - 5) for x in ciphertextA]
+
+# 2022-06-05 21:55:04.276953
++for a in range(256):
++    print(chr(46 - a))
+
+# 2022-06-05 21:55:28.867166
++for a in range(256):
++    print(chr((46 - a) % 256))
+
+# 2022-06-05 21:56:57.052162
++for a in range(256):
++    if chr((46 - a) % 256) in 'abcdefghijklmnopqrstuvwxyz':
++        print(a)
+
+# 2022-06-05 21:57:52.430906
++for a in range(256):
++    if chr((46 - a) % 256) in 'abcdefghijklmnopqrstuvwxyz':
++        print([chr((c - a) % 256) for c in ciphertextA])
+
+# 2022-06-05 21:58:40.394555
++'K'.lower
+
+# 2022-06-05 21:58:44.540681
++'K'.lower()
+
+# 2022-06-05 21:58:55.822186
++for a in range(256):
++    if chr((46 - a) % 256).lower() in 'abcdefghijklmnopqrstuvwxyz':
++        print([chr((c - a) % 256) for c in ciphertextA])
+
+# 2022-06-05 21:59:18.253097
++for a in range(256):
++    if chr((46 - a) % 256).lower() in 'abcdefghijklmnopqrstuvwxyz':
++        print(a, [chr((c - a) % 256) for c in ciphertextA])
+
+# 2022-06-05 22:02:56.184693
++ciphertextB = [x for i, x in ciphertext if i % 3 == 1]
+
+# 2022-06-05 22:03:10.763171
++ciphertextB = [x for i, x in enumerate(ciphertext) if i % 3 == 1]
+
+# 2022-06-05 22:03:14.894346
++ciphertextB
+
+# 2022-06-05 22:03:17.156711
++ciphertext
+
+# 2022-06-05 22:03:52.401999
++for b in range(256):
++    if chr((15 - b) % 256).lower() in 'abcdefghijklmnopqrstuvwxyz':
++        print(a, [chr((c - b) % 256) for c in ciphertextB])
+
+# 2022-06-05 22:05:47.442487
++def decode_char(char, num):
++    return chr((char - num) % 256)
+
+# 2022-06-05 22:05:53.640062
++decode_char(1, 1)
+
+# 2022-06-05 22:06:29.220923
++j = decode_char(1, 1)
+
+# 2022-06-05 22:07:19.430155
++j.isalpha()
+
+# 2022-06-05 22:07:34.505956
++j.isascii()
+
+# 2022-06-05 22:07:42.553402
++j.isalnum()
+
+# 2022-06-05 22:07:54.077445
++j.isprintable
+
+# 2022-06-05 22:07:56.820191
++j.isprintable()
+
+# 2022-06-05 22:08:24.152482
++j.isidentifier
+
+# 2022-06-05 22:08:28.565018
++j.isidentifier()
+
+# 2022-06-05 22:11:54.537147
++for b in range(256):
++    dec = [decode(x, b).isprintable() for x in ciphertextB]
++    if all([decode(x, b).isprintable() for x in ciphertextB]):
++        print(b, dec)
+
+# 2022-06-05 22:12:12.049548
++for b in range(256):
++    dec = [decode_char(x, b).isprintable() for x in ciphertextB]
++    if all([decode_char(x, b).isprintable() for x in ciphertextB]):
++        print(b, dec)
+
+# 2022-06-05 22:12:39.341709
++for b in range(256):
++    dec = [decode_char(x, b) for x in ciphertextB]
++    if all([d.isprintable() for d in dec]):
++        print(b, dec)
+
+# 2022-07-01 18:13:35.026534
++import pandas as pt
+
+# 2022-07-05 19:35:35.985879
++a = '30 Jul 2004(New Build)'
+
+# 2022-07-05 19:35:45.648455
++import dateutil.parser as dtparser
+
+# 2022-07-05 19:35:49.720177
++dtparser(a)
+
+# 2022-07-05 19:36:12.024992
++dtparser.parse(a)
+
+# 2022-07-05 19:39:12.213789
++a.split('(')
+
+# 2022-07-05 19:39:24.993655
++b,_ = a.split('(')
+
+# 2022-07-05 19:39:25.870668
++b
+
+# 2022-07-05 19:39:49.744698
++j = b
+
+# 2022-07-05 19:39:54.337295
++j.split('(')
+
+# 2022-07-05 19:40:00.858644
++b, _ = j.split('(')
+
+# 2022-07-05 19:40:40.446645
++a
+
+# 2022-07-05 19:40:41.577626
++b
+
+# 2022-07-05 19:40:48.379580
++dtparser.parse(b)
+
+# 2022-07-05 19:41:01.271879
++dtparser.parse(b).isoformat
+
+# 2022-07-05 19:41:03.673131
++dtparser.parse(b).isoformat()
+
+# 2022-07-06 17:03:40.837689
++import scipy.stats as stats
+
+# 2022-07-07 16:49:47.950808
++import random
+
+# 2022-07-07 16:49:57.351938
++random.normalvariate(288, 1)
+
+# 2022-07-08 13:54:28.878777
++import numpy as np
+
+# 2022-07-08 13:54:33.947998
++np.range(100)
+
+# 2022-07-08 13:54:37.920609
++np.arange(1000)
+
+# 2022-07-08 20:20:09.671881
++import scikit as sk
+
+# 2022-07-08 20:44:31.335197
++import sklearn
+
+# 2022-07-08 20:45:00.159527
++import scipy
