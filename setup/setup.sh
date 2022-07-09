@@ -1,5 +1,6 @@
 CONFIG_HOME=$HOME/.config2
 prompt() {
+  local ans=""
   printf '%s ' "$1 (y/n)" 
   read ans
   if [ "$ans" = "y" ]; then
@@ -14,6 +15,7 @@ __xcode() {
 }
 
 __configure_ssh() {
+  echo "configuring ssh..."
   ssh-keygen -t ed25519 -C $1
   eval "$(ssh-agent -s)"
   touch ~/.ssh/config
