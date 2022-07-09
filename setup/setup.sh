@@ -35,7 +35,7 @@ __git() {
 __dotfiles() {
   read -p "fetch full config? (y/n) " fetch_dotfiles
   if [ "$fetch_dotfiles" = "y" ]; then
-    git clone --recurse-submodules git@github.com:crawdaddie/dotfiles.git $CONFIG_HOME
+    git clone --recurse-submodules --remote-submodules git@github.com:crawdaddie/dotfiles.git $CONFIG_HOME
   fi
 }
 
