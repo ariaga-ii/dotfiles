@@ -1,4 +1,4 @@
-CONFIG_HOME=$HOME/.config
+CONFIG_HOME=$HOME/.config2
 # apple dev tools
 __xcode() {
   read -p "install xcode tools? (y/n) " install_xcode
