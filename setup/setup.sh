@@ -1,7 +1,7 @@
 CONFIG_HOME=$HOME/.config2
 # apple dev tools
 __xcode() {
-  read install_xcode"?install xcode tools? (y/n) "
+  read -p "install xcode tools? (y/n) " install_xcode
   if [ "$install_xcode" = "y" ]; then
     echo "installing xcode tools..."
     xcode-select --install;
@@ -22,10 +22,10 @@ __configure_ssh() {
 }
 
 __git() {
-  read configure_git"?configure git? (y/n) "
+  read -p "configure git? (y/n) " configure_git
   if [ "$configure_git" = "y" ]; then
-    read git_user"?please enter github username: "
-    read git_email"?please enter email: "
+    read git_user"please enter github username: "
+    read git_email"please enter email: "
     __configure_ssh $git_email
     git config --global user.name=$git_user
     git config --global user.email=$git_email
@@ -33,15 +33,15 @@ __git() {
 }
 
 __dotfiles() {
-  read fetch_dotfiles"?fetch full config? (y/n) "
+  read -p "fetch full config? (y/n) " fetch_dotfiles
   if [ "$fetch_dotfiles" = "y" ]; then
-    git clone git@github.com:crawdaddie/dotfiles.git $CONFIG_HOME
+    git clone --recurse-submodules git@github.com:crawdaddie/dotfiles.git $CONFIG_HOME
   fi
 }
 
 # brew
 __brew() {
-  read install_brew"?install brew? (y/n) " 
+  read -p "install brew? (y/n) " install_brew 
   if [ "$install_brew" = "y" ]; then
     echo "installing brew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -53,7 +53,7 @@ __brew() {
 
 # oh-my-zsh
 __shell() {
-  read configure_ohmyzsh"?configure oh-my-zsh? "
+  read -p "configure oh-my-zsh? " configure_ohmyzsh
   if [ "$configure_ohmyzsh" = "y" ]; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -64,7 +64,7 @@ __shell() {
 }
 
 __python() {
-  read configure_python"?install python? "
+  read -p "install python? " configure_python
   if [ "$configure_python" = "y" ]; then
     pyenv init
     pyenv install anaconda3-5.3.1
