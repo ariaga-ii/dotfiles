@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# _!  /_usr/bin/zsh
+# selection=$(
+#   dmenu_path |
+#   fzf --no-sort --tiebreak=index --bind=ctrl-s:toggle-sort --query=$1 --reverse --color=light --inline-info
+# )
+# i3-msg exec $selection &
+# kitty @ close-window
+
+# --print-query is used to run a custom command when none of the list is
+# selected.
+OPTS='--info=inline --print-query --bind=ctrl-space:print-query,tab:replace-query --reverse --color=light --inline-info'
+
+exec i3-msg -q "exec --no-startup-id $(dmenu_path | fzf $OPTS | tail -1)"

@@ -1,0 +1,8 @@
+#!/usr/bin/zsh
+selection=$(
+  i3-tree -i |
+  fzf --ansi --no-sort --tiebreak=index --bind=ctrl-s:toggle-sort --query=$1 --reverse --color=light --inline-info
+)
+id_match=$(echo $selection | grep -oP '(?<=con_id=)[0-9]+')
+i3-msg '[con_id="'$id_match'"] focus'
+kitty @ close-window

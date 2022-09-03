@@ -1,14 +1,22 @@
+#Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc. Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
+# export PATH=$HOME/neovim/build/bin:$PATH
+# export PATH=$HOME/bin:$PATH
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -52,101 +60,127 @@ ZSH_THEME="agnoster"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  #vi-mode
+  vi-mode
   docker
   docker-compose
+  kubectl
+  aws
 )
 
+# complete -C aws_completer aws
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-#VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-#MODE_INDICATOR="%F{yellow}+%f"
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-source /home/adam/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # git aliases
 alias gfp="git fetch && git pull"
 alias gcn="git checkout -b"
 
-# deno
-export DENO_INSTALL="/home/adam/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-
 # vim
-export VIM_CONFIG="/home/adam/.config/nvim/init.vim"
+nvimbin=/usr/bin/nvim
+export VIM_CONFIG="$HOME/.config/nvim/init.lua"
+export EDITOR=$nvimbin
+export VISUAL=$nvimbin
 
-export EDITOR='/usr/bin/nvim'
-export VISUAL='/usr/bin/nvim'
-
-export DOTFILES="$HOME/dotfiles"
+export DOTFILES="$ADAM/dotfiles"
 alias zshconfig="nvim $DOTFILES/.zshrc +"
 alias vimconfig="nvim $DOTFILES/nvim"
-
-alias new="terminator -e"
-# go stuff
-export PATH=$PATH:/usr/local/go/bin
-
-# python stuff
-export PYTHONPATH=$HOME/python
 
 dockerstop() {
   docker rm $(docker stop $(docker ps -a -q --filter ancestor="$1" --format="{{.ID}}"))
 }
+eval "$(jump shell zsh)"
+# eval "$(fnm env)"
+autoload -U add-zsh-hook
 
-export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# place default node version under $HOME/.node-version
+# load-nvmrc() {
+#   DEFAULT_NODE_VERSION=`cat $HOME/.node-version`
+#   if [[ -f .nvmrc && -r .nvmrc ]]; then
+#     fnm use
+#   elif [[ `node -v` != $DEFAULT_NODE_VERSION ]]; then
+#     echo Reverting to node from "`node -v`" to "$DEFAULT_NODE_VERSION"
+#     fnm use $DEFAULT_NODE_VERSION
+#   fi
+# }
 
-alias bigvim="terminator -f -x nvim"
+# add-zsh-hook chpwd load-nvmrc
+# load-nvmrc
+
+
+
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+#     --color=fg:-1,bg:-1,hl:#62819e'
+export FZF_DEFAULT_OPTS="--color=light --inline-info"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+#krew
+# export PATH="${PATH}:${HOME}/.krew/bin"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/adam/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/adam/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/adam/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/adam/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 
-# octeract stuff
-source $HOME/oct/.oct-shortcuts
 
+# export PATH=$HOME/.pyenv/bin:$PATH
+# 
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+# 
+# export PATH="$HOME/.poetry/bin:$PATH"
+# source $HOME/.poetry/env
+alias python=python3
+
+
+
+
+## VIM
+bindkey -v
+
+
+# alias docker-build-amd="docker build --platform linux/amd64"
+export BAT_THEME=gruvbox-light
+# source $HOME/.config/open-api/config
+
+# opam configuration
+# [[ ! -r /Users/adam/.opam/opam-init/init.zsh ]] || source /Users/adam/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+alias ranger=". ranger"
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+#
+#
+# golang
+export PATH=$PATH:/usr/local/go/bin
+
+# fnm
+export PATH=/home/adam/.fnm:$PATH
+eval "`fnm env`"

@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+selection=$(i3-tree | dmenu -i -l 20 -fn "pango-12" -nb "#e0e0e0" -nf "#4e4e4e" -sb "#4e4e4e" -sf "#e0e0e0")
+# echo $selection
+id_match=$(echo $selection | grep -oP '(?<=con_id=)[0-9]+')
+i3-msg '[con_id="'$id_match'"] focus'
+
+

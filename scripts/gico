@@ -1,0 +1,5 @@
+#!/bin/zsh
+git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | \
+    fzf --ansi --no-sort --tiebreak=index --bind=ctrl-s:toggle-sort --query=$1 \
+    --preview 'git show {} | delta --light --syntax-theme=gruvbox-light'\
+)
