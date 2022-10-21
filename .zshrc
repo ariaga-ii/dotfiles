@@ -102,7 +102,7 @@ alias vimconfig="nvim $DOTFILES/nvim"
 dockerstop() {
   docker rm $(docker stop $(docker ps -a -q --filter ancestor="$1" --format="{{.ID}}"))
 }
-eval "$(jump shell zsh)"
+#eval "$(jump shell zsh)"
 # eval "$(fnm env)"
 autoload -U add-zsh-hook
 
@@ -126,7 +126,6 @@ autoload -U add-zsh-hook
 #     --color=fg:-1,bg:-1,hl:#62819e'
 export FZF_DEFAULT_OPTS="--color=light --inline-info"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 #krew
 # export PATH="${PATH}:${HOME}/.krew/bin"
@@ -162,6 +161,7 @@ alias python=python3
 
 ## VIM
 bindkey -v
+source /usr/share/fzf/key-bindings.zsh
 
 
 # alias docker-build-amd="docker build --platform linux/amd64"
@@ -169,7 +169,7 @@ export BAT_THEME=gruvbox-light
 # source $HOME/.config/open-api/config
 
 # opam configuration
-# [[ ! -r /Users/adam/.opam/opam-init/init.zsh ]] || source /Users/adam/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r /Users/adam/.opam/opam-init/init.zsh ]] || source /Users/adam/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 alias ranger=". ranger"
 
@@ -180,6 +180,14 @@ alias ranger=". ranger"
 #
 # golang
 export PATH=$PATH:/usr/local/go/bin
+
+# fnm
+#export PATH=/home/adam/.fnm:$PATH eval "`fnm env`"
+#
+# clipcat
+
+
+
 
 # fnm
 export PATH=/home/adam/.fnm:$PATH

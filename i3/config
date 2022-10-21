@@ -59,12 +59,12 @@ set $urgent-bg-color     #af5f5f
 # client.unfocused #d0d0d0 #e1e1e1 #d0d0d0 
 # client.focused_inactive #d0d0d0 #e1e1e1 #d0d0d0 
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #e1e1e1 #e1e1e1 #ffffff #4e4e4e   $coral
-client.focused_inactive #e1e1e1 #e1e1e1 #ffffff #e1e1e1   #d0d0d0
-client.unfocused        #e1e1e1 #e1e1e1 #888888 #e1e1e1   #d0d0d0
-client.urgent           #e1e1e1 $magenta #ffffff $magenta $magenta 
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+# class                 border  backgr. text        indicator child_border
+client.focused          #e1e1e1 #e1e1e1 $foreground #4e4e4e   $coral
+client.focused_inactive #e1e1e1 #e1e1e1 $foreground #e1e1e1   #d0d0d0
+client.unfocused        #e1e1e1 #e1e1e1 $foreground #e1e1e1   #d0d0d0
+client.urgent           #e1e1e1 $magenta $foreground $magenta $magenta 
+client.placeholder      #000000 #0c0c0c $foreground #000000   #0c0c0c
 
 client.background       #e1e1e1
 
@@ -74,7 +74,8 @@ client.background       #e1e1e1
 # client.background       $cursorColor        $cursorColor2
 
 # pixel borders remove title bars completely because of compton shadows
-# for_window [class="^.*"] border pixel 5 
+#for_window [class="^.*"] border pixel 0
+#gaps outer all set 20
 # for disabling borders on tiling windows
 for_window [tiling] border pixel 1 
 
@@ -93,7 +94,7 @@ set $right l
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Meslo 12 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -123,8 +124,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec ~/.local/bin/backlight +20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec ~/.local/bin/backlight -20 # decrease screen brightness
 
 
 
@@ -132,11 +135,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+t exec kitty
-bindsym $mod+Shift+t exec kitty --class kitty-floating
-# for_window [instance="kitty-floating"] floating enabled
-for_window [class="kitty-floating"] floating enable, resize set 1200 900
-for_window [class="^launcher$"] floating enable, sticky enable, resize set 800 600
+bindsym $mod+t exec /usr/bin/kitty
+bindsym $mod+Shift+t exec /usr/bin/kitty --class kitty-floating
+
 
 
 # kill focused window
@@ -144,10 +145,11 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run -fn "pango-12" -nb "#e1e1e1" -nf "#4e4e4e" -sb "#4e4e4e" -sf "#e1e1e1"
-set $menu exec kitty --class=launcher ~/.local/bin/i3-launcher
+set $menu exec /usr/bin/kitty --class=launcher ~/.local/bin/i3-launcher
 # set $menu exec kitty --class=launcher -e ~/projects/sway-launcher-desktop/sway-launcher-desktop.sh
 bindsym $mod+space exec $menu
-bindsym $mod+p exec kitty --class=launcher ~/.local/bin/winpicker-fzf
+bindsym $mod+p exec /usr/bin/kitty --class=launcher ~/.local/bin/winpicker-fzf
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -255,15 +257,18 @@ bindsym $mod+Shift+r restart
 include mode_system.conf
 include mode_move_window.conf
 include mode_resize.conf
+include winclass.conf
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
   # i3bar_command i3bar --transparency #000000
-# start using custom config file (full path)
+  # start using custom config file (full path)
   status_command ~/.local/bin/mystatus.sh
+
+  # status_command i3status
   # tray_padding         3
-  # font pango:Ubuntu 9
+  font pango:MesloLGM Nerd Font
 
 	colors {
 		# whole color settings
@@ -287,4 +292,3 @@ bar {
 
 
 # hide_edge_borders vertical
-

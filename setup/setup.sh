@@ -24,7 +24,7 @@ __configure_ssh() {
     UseKeychain yes
     IdentityFile ~/.ssh/id_ed25519" >> ~/.ssh/config
   ssh-add -K ~/.ssh/id_ed25519
-  pbcopy < ~/.ssh/id_ed25519.pub
+  # pbcopy < ~/.ssh/id_ed25519.pub
   echo "ssh public key copied to clipboard, please enter it at https://github.com/settings/ssh/new"
 }
 
