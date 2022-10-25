@@ -1,5 +1,5 @@
 #
-eval "$(fnm env)"
+# eval "$(fnm env)"
 # autoload -U add-zsh-hook
 
 # place default node version under $HOME/.node-version
@@ -170,7 +170,5 @@ export BAT_THEME=gruvbox-light
 # [[ ! -r /Users/adam/.opam/opam-init/init.zsh ]] || source /Users/adam/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 #
 alias ranger=". ranger"
-#
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
