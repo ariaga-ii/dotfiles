@@ -1,6 +1,4 @@
 #
-# eval "$(fnm env)"
-# autoload -U add-zsh-hook
 
 # place default node version under $HOME/.node-version
 # load-nvmrc() {
@@ -26,8 +24,8 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export PATH=$HOME/neovim/build/bin:$PATH
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/neovim/build/bin:$HOME/bin:$HOME/.local/bin:$PATH
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -88,6 +86,7 @@ plugins=(
   docker-compose
   kubectl
   aws
+  colored-man-pages
 )
 
 # complete -C aws_completer aws
@@ -107,8 +106,8 @@ alias gcn="git checkout -b"
 
 # vim
 #export VIM_CONFIG="$HOME/.config/nvim/init.lua"
-#export EDITOR='/opt/homebrew/bin/nvim'
-#export VISUAL='/opt/homebrew/bin/nvim'
+export EDITOR='/opt/homebrew/bin/nvim'
+export VISUAL='/opt/homebrew/bin/nvim'
 
 # export DOTFILES="$ADAM/dotfiles"
 alias zshconfig="nvim $DOTFILES/.zshrc +"
@@ -171,4 +170,14 @@ export BAT_THEME=gruvbox-light
 #
 alias ranger=". ranger"
 
+eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+eval "$(fnm env)"
+# autoload -U add-zsh-hook
+#
+#
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+
+
