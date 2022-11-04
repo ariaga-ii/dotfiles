@@ -174,10 +174,12 @@ eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 eval "$(fnm env)"
+alias nvm="fnm"
 # autoload -U add-zsh-hook
 #
 #
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
+
 
 
