@@ -1,3 +1,9 @@
-*.DS_Store
-*/**/__pycache__/*
-
+*
+!nvim
+!shell
+!kitty
+!i3
+!i3status
+!ranger
+!setup
+!bat
