@@ -30,7 +30,7 @@ bindkey -M vicmd v edit-command-line
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
 
-# export PATH=/Applications/Julia-1.9.app/Contents/Resources/bin:"/Applications/Racket v8.9/bin":$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # setopt AUTO_PUSHD           # Push the current directory visited on the stack.
 # setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
@@ -113,42 +113,7 @@ conda_info() {
 # precmd_functions+=(conda_info)
 
 #source ~/projects/gitstatus/gitstatus.prompt.zsh
-# RPROMPT="%F{cyan}$CONDA_ENV%f"
+RPROMPT="%F{cyan}$CONDA_ENV%f"
 
-# source $ZDOTDIR/prompt.zsh
-COLOR_GIT_CLEAN=""
-COLOR_GIT_MODIFIED=''
-COLOR_GIT_STAGED=''
-COLOR_RESET='%F{240}'
-
-# function git_prompt() {
-#   if [ -e ".git" ]; then
-#     branch_name=$(git symbolic-ref -q HEAD)
-#     branch_name=${branch_name##refs/heads/}
-#     branch_name=${branch_name:-HEAD}
-#
-#     echo -n " "
-#
-#     if [[ $(git status 2> /dev/null | tail -n1) = *"nothing to commit"* ]]; then
-#       echo -n "$COLOR_GIT_CLEAN$branch_name$COLOR_RESET"
-#     elif [[ $(git status 2> /dev/null | head -n5) = *"Changes to be committed"* ]]; then
-#       echo -n "$COLOR_GIT_STAGED$branch_name$COLOR_RESET"
-#     else
-#       echo -n "$COLOR_GIT_MODIFIED$branch_name*$COLOR_RESET"
-#     fi
-#
-#     echo -n " "
-#   fi
-# }
-#
-#
-# PROMPT_COMMAND=prompt
-source $ZDOTDIR/git-prompt.zsh
-
-PROMPT='%F{blue}%~%F{240}%F{green} $(gitprompt)
-%F{green}> %F{240}'
-
-[ -f "/Users/adam/.ghcup/env" ] && source "/Users/adam/.ghcup/env" # ghcup-env
-
-# opam configuration
-[[ ! -r /Users/adam/.opam/opam-init/init.zsh ]] || source /Users/adam/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+PROMPT="%F{blue}%~%F{240}
+%F{green}> %F{240}"
