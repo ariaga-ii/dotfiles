@@ -6,6 +6,7 @@ unsetopt HIST_SAVE_NO_DUPS       # Write a duplicate event to the history file
 export FZF_DEFAULT_OPTS="--color=light --inline-info"
 export FZF_PATH=~/.fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $ZDOTDIR/awesome-fzf.sh
 
 export BAT_THEME=gruvbox-light
 
@@ -148,7 +149,13 @@ source $ZDOTDIR/git-prompt.zsh
 PROMPT='%F{blue}%~%F{240}%F{green} $(gitprompt)
 %F{green}> %F{240}'
 
-[ -f "/Users/adam/.ghcup/env" ] && source "/Users/adam/.ghcup/env" # ghcup-env
+# [ -f "/Users/adam/.ghcup/env" ] && source "/Users/adam/.ghcup/env" # ghcup-env
 
 # opam configuration
 [[ ! -r /Users/adam/.opam/opam-init/init.zsh ]] || source /Users/adam/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+alias nv=nvim
+
+export PATH=/Applications/Racket\ v8.11.1/bin:$PATH
+
+export PATH="/opt/homebrew/opt/llvm@16/bin:$PATH"
