@@ -159,3 +159,16 @@ alias nv=nvim
 export PATH=/Applications/Racket\ v8.11.1/bin:$PATH
 
 export PATH="/opt/homebrew/opt/llvm@16/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/llvm@16/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/llvm@16/include"
+# If you need to have llvm@16 first in your PATH, run:
+#   echo 'export PATH="/opt/homebrew/opt/llvm@16/bin:$PATH"' >> ~/.zshrc
+#
+# For compilers to find llvm@16 you may need to set:
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=${HOME}/local/lib/:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=${HOME}/local/lib/pkgconfig:$PKG_CONFIG_PATH
+
+# Created by `pipx` on 2024-07-12 10:32:11
+export PATH="$PATH:/Users/adam/.local/bin"
